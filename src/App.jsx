@@ -1,8 +1,9 @@
 import Header from "./components/Header";
 import AttendeeList from "./components/AttendeeList";
+import SessionList from "./components/SessionList";
 import "./styles/App.css";
 
-function App() {
+function App() { 
     return (
         <>
             <div>
@@ -10,6 +11,7 @@ function App() {
 
                 <Header />
                 <AttendeeList />
+                <SessionList />
             </div>
         </>
     );
