@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import AttendeeList from "./components/AttendeeList";
+import SessionList from "./components/SessionList";
 import "./styles/App.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 
                 <Header />
                 <AttendeeList />
+                <SessionList />
             </div>
         </>
     );
