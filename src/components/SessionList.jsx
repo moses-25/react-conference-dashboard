@@ -6,59 +6,66 @@ function SessionList() {
         {
             id: 1,
             title: "React Fundamentals",
-            room: "room A",
-            time: "9:00AM",
-            Registration: false 
+            room: "Room A",
+            time: "09:00 AM",
+            registered: false,
         },
         {
             id: 2,
-            title: "Vue Fundamentals",
-            room: "room B",
-            time: "10:00AM",
-            Registration: false 
+            title: "Advanced Node.js",
+            room: "Room B",
+            time: "11:00 AM",
+            registered: false,
         },
         {
             id: 3,
-            title: "Angular Fundamentals",
-            room: "room C",
-            time: "11:00AM",
-            Registration: false 
-        }   
+            title: "UI/UX Design Principles",
+            room: "Room C",
+            time: "02:00 PM",
+            registered: false,
+        },
     ]);
 
     const handleRegistration = (id) => {
-        const updatedSessions = sessions.map((session) => 
-            session.id === id ? { ...session, Registration: !session.Registration } : session
+        const updatedSessions = sessions.map(
+            (session) =>
+                session.id === id
+                    ? {
+                          ...session,
+                          registered: !session.registered,
+                      }
+                    : session
         );
+
         setSessions(updatedSessions);
     };
 
     return (
-        <section className="session-list">
-            <h2 className="session-title">Upcoming Sessions</h2>
-            
-            {sessions.map((session) => (
-                <div
-                    key={session.id}
-                    className="session-card"
-                >
-                    <h3>{session.title}</h3>
+        <section className="sessions-section">
+            <h2 className="sessions-title">Upcoming Sessions</h2>
 
-                    <p> 📍{session.room}</p>
+            <div className="sessions-grid">
+                {sessions.map((session) => (
+                    <div key={session.id} className="session-card">
+                        <h3>{session.title}</h3>
 
-                    <p> 🕒{session.time}</p>
+                        <p>📍 {session.room}</p>
 
-                    <button
-                        className={session.Registration
-                            ? "registered-session-btn"
-                            : "register-session-btn"
-                        }
-                        onClick={() => handleRegistration(session.id)}
-                    >
-                        {session.Registration ? "Unregister" : "Register"}
-                    </button>
-                </div>
-            ))}
+                        <p>🕒 {session.time}</p>
+
+                        <button
+                            className={
+                                session.registered
+                                    ? "registered-session-btn"
+                                    : "register-session-btn"
+                            }
+                            onClick={() => handleRegistration(session.id)}
+                        >
+                            {session.registered ? "Registered" : "Register"}
+                        </button>
+                    </div>
+                ))}
+            </div>
         </section>
     );
 }
